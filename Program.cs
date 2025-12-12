@@ -28,17 +28,32 @@ namespace LCDResetTool
 
             try
             {
-                // Attempt a USB reset
-                usbDevice.ResetDevice();
-                Console.WriteLine("Device reset successfully.");
+                // ResetDevice is implemented on IUsbDevice; cast and call there.
+                var wholeUsbDevice = usbDevice as IUsbDevice;
+                if (wholeUsbDevice != null)
+                {
+                    wholeUsbDevice.ResetDevice();
+                    Console.WriteLine("Device reset successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Device does not implement IUsbDevice. Cannot call ResetDevice.");
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error resetting device: " + ex.Message);
             }
-
-            usbDevice.Close();
-            UsbDevice.Exit();
+            finally
+            {
+                // Always clean up
+                try
+                {
+                    usbDevice.Close();
+                }
+                catch { /* ignore close errors */ }
+                UsbDevice.Exit();
+            }
 
             Console.WriteLine("Done. You can close this window.");
             Thread.Sleep(2000); // Optional pause to see messages
