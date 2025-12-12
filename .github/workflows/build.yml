@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-
     runs-on: windows-latest
 
     steps:
@@ -20,13 +19,16 @@ jobs:
         dotnet-version: '6.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./LCDResetTool.csproj
 
-    - name: Build
-      run: dotnet publish -c Release -r win-x64 --self-contained true --output output
+    - name: Build / Publish
+      run: dotnet publish ./LCDResetTool.csproj -c Release --output output
+
+    - name: Show output contents
+      run: dir output
 
     - name: Upload EXE
       uses: actions/upload-artifact@v4
       with:
         name: LCDResetTool
-        path: output/
+        path: output/**
