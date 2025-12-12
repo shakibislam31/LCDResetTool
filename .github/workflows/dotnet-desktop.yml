@@ -12,13 +12,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '4.8.x'
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1
 
     - name: Restore NuGet packages
-      run: dotnet restore
+      run: nuget restore LCDResetTool.sln
 
     - name: Build EXE
       run: msbuild LCDResetTool.sln /p:Configuration=Release /p:Platform=x64
