@@ -7,7 +7,6 @@ namespace LCDResetTool
 {
     class Program
     {
-        // Your LCD's Vendor ID and Product ID
         const int VID = 0x38C1;
         const int PID = 0x0004;
 
@@ -40,7 +39,7 @@ namespace LCDResetTool
             UsbDevice.Exit();
 
             Console.WriteLine("Done. You can close this window.");
-            Thread.Sleep(2000); // Pause to see messages
+            Thread.Sleep(2000);
         }
     }
 }
