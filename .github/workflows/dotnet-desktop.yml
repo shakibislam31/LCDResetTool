@@ -19,4 +19,4 @@ jobs:
       run: nuget restore LCDResetTool.sln
 
     - name: Build EXE
-      run: msbuild LCDResetTool.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild LCDResetTool/LCDResetTool.csproj /p:Configuration=Release /p:Platform=x64
