@@ -16,7 +16,13 @@ jobs:
       uses: NuGet/setup-nuget@v1
 
     - name: Restore NuGet packages
-      run: nuget restore LCDResetTool.sln
+      run: nuget restore LCDResetTool/LCDResetTool.csproj
 
     - name: Build EXE
       run: msbuild LCDResetTool/LCDResetTool.csproj /p:Configuration=Release /p:Platform=x64
+
+    - name: Upload EXE Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: LCDResetTool
+        path: LCDResetTool/bin/Release/x64/
