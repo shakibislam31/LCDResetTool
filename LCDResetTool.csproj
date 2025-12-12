@@ -5,6 +5,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <!-- Publish settings to create a single self-contained EXE for Windows x64 -->
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <!-- Optional: trim to reduce size, test for compatibility before enabling -->
+    <!-- <PublishTrimmed>true</PublishTrimmed> -->
   </PropertyGroup>
 
   <ItemGroup>
