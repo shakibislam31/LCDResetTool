@@ -28,7 +28,6 @@ namespace LCDResetTool
 
             try
             {
-                // Attempt a USB reset
                 usbDevice.ResetDevice();
                 Console.WriteLine("Device reset successfully.");
             }
@@ -41,7 +40,7 @@ namespace LCDResetTool
             UsbDevice.Exit();
 
             Console.WriteLine("Done. You can close this window.");
-            Thread.Sleep(2000); // Optional pause to see messages
+            Thread.Sleep(2000); // Pause to see messages
         }
     }
 }
